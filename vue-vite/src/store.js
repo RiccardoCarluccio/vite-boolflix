@@ -11,7 +11,7 @@ export function filterFilms(searchText) {
   store.filmsList = [];
 
   fetchFilms(
-    `https://api.themoviedb.org/3/discover/movie?api_key=5b12a2b80ff5a258c5bf9900c0ad169d&${searchText}`
+    `https://api.themoviedb.org/3/discover/movie?api_key=5b12a2b80ff5a258c5bf9900c0ad169d&${searchText.toLowerCase()}`
   );
   console.log("test2");
 };
