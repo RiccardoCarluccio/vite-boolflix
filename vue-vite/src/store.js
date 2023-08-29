@@ -7,22 +7,33 @@ export const store = reactive({
 });
 //title, original_title, original_language, vote_average
 
-export function filterFilms(searchText) {
+export function filterFilms() {
   store.filmsList = [];
 
   fetchFilms(
-    `https://api.themoviedb.org/3/discover/movie?api_key=5b12a2b80ff5a258c5bf9900c0ad169d&${searchText.toLowerCase()}`
+    "https://api.themoviedb.org/3/search/movie"
   );
   console.log("test2");
 };
 
-export function fetchFilms(nextUrl) {
-  const url = nextUrl ?? "https://api.themoviedb.org/3/discover/movie?api_key=5b12a2b80ff5a258c5bf9900c0ad169d";
+export function fetchFilms(url) {
+  //const url = nextUrl ?? "https://api.themoviedb.org/3/discover/movie?api_key=5b12a2b80ff5a258c5bf9900c0ad169d";
 
   axios
-    .get(url).then((response) => {
-      store.cards = response.data.title;
+    .get(url, {
+      params: {
+        api_key: "5b12a2b80ff5a258c5bf9900c0ad169d",
+        query: store.searchText,
+      },
+      }).then((response) => {
+      //store.filmsList = response.data.results;
+      store.filmsList.push(...response.data.results);
     });
+    console.log(store.filmsList);
 }
 
 //5b12a2b80ff5a258c5bf9900c0ad169d
+//?api_key=5b12a2b80ff5a258c5bf9900c0ad169d&query${searchText}
+
+//params: filtro{}
+//axios params

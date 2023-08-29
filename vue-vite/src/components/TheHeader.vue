@@ -14,7 +14,7 @@
 </script>
 
 <template>
-  <input type="text" id="search-field" name="search-field" placeholder="Search film"/>
+  <input type="text" id="search-field" name="search-field" placeholder="Search film" v-model="store.searchText"/>
   <button type="button" @click="filterFilms">Search</button>
 </template>
 
