@@ -8,12 +8,9 @@ export const store = reactive({
 //title, original_title, original_language, vote_average
 
 export function filterFilms() {
-  store.filmsList = [];
-
   fetchFilms(
-    "https://api.themoviedb.org/3/search/movie"
+    "https://api.themoviedb.org/3/search/multi"
   );
-  console.log("test2");
 };
 
 export function fetchFilms(url) {
@@ -26,6 +23,7 @@ export function fetchFilms(url) {
         query: store.searchText,
       },
       }).then((response) => {
+        store.filmsList = [];
       //store.filmsList = response.data.results;
       store.filmsList.push(...response.data.results);
     });
