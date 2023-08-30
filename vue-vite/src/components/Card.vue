@@ -14,7 +14,10 @@
     <img :src="`http://image.tmdb.org/t/p/w500/${card.poster_path}`" alt="">
   </div>
   <div class="film-details">
-    <p></p>
+    <p>{{ card.title }}</p>
+    <p>{{ card.original_title }}</p>
+    <p>{{ card.original_language }}</p>
+    <p>{{ card.vote_average }}</p>
   </div>
 </template>
 
